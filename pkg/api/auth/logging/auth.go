@@ -1,6 +1,7 @@
 package auth
 
 import (
+	"github.com/epavanello/gorsk/pkg/models"
 	"time"
 
 	"github.com/labstack/echo"
@@ -57,7 +58,7 @@ func (ls *LogService) Refresh(c echo.Context, req string) (token string, err err
 }
 
 // Me logging
-func (ls *LogService) Me(c echo.Context) (resp gorsk.User, err error) {
+func (ls *LogService) Me(c echo.Context) (resp models.User, err error) {
 	defer func(begin time.Time) {
 		ls.logger.Log(
 			c,

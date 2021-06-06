@@ -1,7 +1,7 @@
 package transport
 
 import (
-	"github.com/epavanello/gorsk"
+	"github.com/epavanello/gorsk/pkg/models"
 )
 
 // User model response
@@ -9,7 +9,7 @@ import (
 type swaggUserResponse struct {
 	// in:body
 	Body struct {
-		*gorsk.User
+		*models.User
 	}
 }
 
@@ -18,7 +18,7 @@ type swaggUserResponse struct {
 type swaggUserListResponse struct {
 	// in:body
 	Body struct {
-		Users []gorsk.User `json:"users"`
-		Page  int          `json:"page"`
+		Users []models.User `json:"users"`
+		Page  int           `json:"page"`
 	}
 }

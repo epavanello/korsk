@@ -1,12 +1,11 @@
 package auth
 
 import (
+	"github.com/epavanello/gorsk/pkg/models"
 	"net/http"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
-
-	"github.com/epavanello/gorsk"
 )
 
 // TokenParser represents JWT token parser
@@ -30,7 +29,7 @@ func Middleware(tokenParser TokenParser) echo.MiddlewareFunc {
 			locationID := int(claims["l"].(float64))
 			username := claims["u"].(string)
 			email := claims["e"].(string)
-			role := gorsk.AccessRole(claims["r"].(float64))
+			role := models.AccessRole(claims["r"].(float64))
 
 			c.Set("id", id)
 			c.Set("company_id", companyID)

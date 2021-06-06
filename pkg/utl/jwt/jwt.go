@@ -2,6 +2,7 @@ package jwt
 
 import (
 	"fmt"
+	"github.com/epavanello/gorsk/pkg/models"
 	"strings"
 	"time"
 
@@ -61,7 +62,7 @@ func (s Service) ParseToken(authHeader string) (*jwt.Token, error) {
 }
 
 // GenerateToken generates new JWT token and populates it with user data
-func (s Service) GenerateToken(u gorsk.User) (string, error) {
+func (s Service) GenerateToken(u models.User) (string, error) {
 	return jwt.NewWithClaims(s.algo, jwt.MapClaims{
 		"id":  u.Base.ID,
 		"u":   u.Username,

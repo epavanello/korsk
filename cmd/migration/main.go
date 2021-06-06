@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
+	"github.com/epavanello/gorsk/pkg/models"
 	"log"
 	"os"
 	"strings"
 
-	"github.com/epavanello/gorsk"
 	"github.com/epavanello/gorsk/pkg/utl/secure"
 
 	"github.com/go-pg/pg/v9"
@@ -30,7 +30,7 @@ func main() {
 	db := pg.Connect(u)
 	_, err = db.Exec("SELECT 1")
 	checkErr(err)
-	createSchema(db, &gorsk.Company{}, &gorsk.Location{}, &gorsk.Role{}, &gorsk.User{})
+	createSchema(db, &models.Company{}, &models.Location{}, &models.Role{}, &models.User{})
 
 	for _, v := range queries[0 : len(queries)-1] {
 		_, err := db.Exec(v)

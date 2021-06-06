@@ -1,6 +1,7 @@
 package password_test
 
 import (
+	"github.com/epavanello/gorsk/pkg/models"
 	"testing"
 
 	"github.com/epavanello/gorsk"
@@ -47,11 +48,11 @@ func TestChange(t *testing.T) {
 					return nil
 				}},
 			udb: &mockdb.User{
-				ViewFn: func(db orm.DB, id int) (gorsk.User, error) {
+				ViewFn: func(db orm.DB, id int) (models.User, error) {
 					if id != 1 {
-						return gorsk.User{}, nil
+						return models.User{}, nil
 					}
-					return gorsk.User{}, gorsk.ErrGeneric
+					return models.User{}, gorsk.ErrGeneric
 				},
 			},
 		},
@@ -64,8 +65,8 @@ func TestChange(t *testing.T) {
 				}},
 			wantErr: true,
 			udb: &mockdb.User{
-				ViewFn: func(db orm.DB, id int) (gorsk.User, error) {
-					return gorsk.User{
+				ViewFn: func(db orm.DB, id int) (models.User, error) {
+					return models.User{
 						Password: "HashedPassword",
 					}, nil
 				},
@@ -85,8 +86,8 @@ func TestChange(t *testing.T) {
 				}},
 			wantErr: true,
 			udb: &mockdb.User{
-				ViewFn: func(db orm.DB, id int) (gorsk.User, error) {
-					return gorsk.User{
+				ViewFn: func(db orm.DB, id int) (models.User, error) {
+					return models.User{
 						Password: "HashedPassword",
 					}, nil
 				},
@@ -108,12 +109,12 @@ func TestChange(t *testing.T) {
 					return nil
 				}},
 			udb: &mockdb.User{
-				ViewFn: func(db orm.DB, id int) (gorsk.User, error) {
-					return gorsk.User{
+				ViewFn: func(db orm.DB, id int) (models.User, error) {
+					return models.User{
 						Password: "$2a$10$udRBroNGBeOYwSWCVzf6Lulg98uAoRCIi4t75VZg84xgw6EJbFNsG",
 					}, nil
 				},
-				UpdateFn: func(orm.DB, gorsk.User) error {
+				UpdateFn: func(orm.DB, models.User) error {
 					return nil
 				},
 			},

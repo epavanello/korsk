@@ -1,6 +1,7 @@
 package user
 
 import (
+	"github.com/epavanello/gorsk/pkg/models"
 	"github.com/go-pg/pg/v9"
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
@@ -11,11 +12,11 @@ import (
 
 // Service represents user application interface
 type Service interface {
-	Create(echo.Context, gorsk.User) (gorsk.User, error)
-	List(echo.Context, gorsk.Pagination) ([]gorsk.User, error)
-	View(echo.Context, int) (gorsk.User, error)
+	Create(echo.Context, models.User) (models.User, error)
+	List(echo.Context, gorsk.Pagination) ([]models.User, error)
+	View(echo.Context, int) (models.User, error)
 	Delete(echo.Context, int) error
-	Update(echo.Context, Update) (gorsk.User, error)
+	Update(echo.Context, Update) (models.User, error)
 }
 
 // New creates new user application service
@@ -43,17 +44,17 @@ type Securer interface {
 
 // UDB represents user repository interface
 type UDB interface {
-	Create(orm.DB, gorsk.User) (gorsk.User, error)
-	View(orm.DB, int) (gorsk.User, error)
-	List(orm.DB, *gorsk.ListQuery, gorsk.Pagination) ([]gorsk.User, error)
-	Update(orm.DB, gorsk.User) error
-	Delete(orm.DB, gorsk.User) error
+	Create(orm.DB, models.User) (models.User, error)
+	View(orm.DB, int) (models.User, error)
+	List(orm.DB, *models.ListQuery, gorsk.Pagination) ([]models.User, error)
+	Update(orm.DB, models.User) error
+	Delete(orm.DB, models.User) error
 }
 
 // RBAC represents role-based-access-control interface
 type RBAC interface {
-	User(echo.Context) gorsk.AuthUser
+	User(echo.Context) models.AuthUser
 	EnforceUser(echo.Context, int) error
-	AccountCreate(echo.Context, gorsk.AccessRole, int, int) error
-	IsLowerRole(echo.Context, gorsk.AccessRole) error
+	AccountCreate(echo.Context, models.AccessRole, int, int) error
+	IsLowerRole(echo.Context, models.AccessRole) error
 }

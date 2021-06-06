@@ -1,6 +1,7 @@
 package gorsk
 
 import (
+	"github.com/epavanello/gorsk/pkg/models"
 	"github.com/labstack/echo"
 )
 
@@ -17,11 +18,11 @@ type RefreshToken struct {
 
 // RBACService represents role-based access control service interface
 type RBACService interface {
-	User(echo.Context) AuthUser
-	EnforceRole(echo.Context, AccessRole) error
+	User(echo.Context) models.AuthUser
+	EnforceRole(echo.Context, models.AccessRole) error
 	EnforceUser(echo.Context, int) error
 	EnforceCompany(echo.Context, int) error
 	EnforceLocation(echo.Context, int) error
-	AccountCreate(echo.Context, AccessRole, int, int) error
-	IsLowerRole(echo.Context, AccessRole) error
+	AccountCreate(echo.Context, models.AccessRole, int, int) error
+	IsLowerRole(echo.Context, models.AccessRole) error
 }

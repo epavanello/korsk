@@ -1,7 +1,8 @@
-package gorsk_test
+package models_test
 
 import (
 	"context"
+	"github.com/epavanello/gorsk/pkg/models"
 	"testing"
 
 	"github.com/epavanello/gorsk"
@@ -9,7 +10,7 @@ import (
 )
 
 func TestBeforeInsert(t *testing.T) {
-	base := &gorsk.Base{
+	base := &models.Base{
 		ID: 1,
 	}
 	base.BeforeInsert(context.TODO())
@@ -22,7 +23,7 @@ func TestBeforeInsert(t *testing.T) {
 }
 
 func TestBeforeUpdate(t *testing.T) {
-	base := &gorsk.Base{
+	base := &models.Base{
 		ID:        1,
 		CreatedAt: mock.TestTime(2000),
 	}

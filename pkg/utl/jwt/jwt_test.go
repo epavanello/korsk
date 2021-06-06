@@ -1,10 +1,10 @@
 package jwt_test
 
 import (
+	"github.com/epavanello/gorsk/pkg/models"
 	"strings"
 	"testing"
 
-	"github.com/epavanello/gorsk"
 	"github.com/epavanello/gorsk/pkg/utl/jwt"
 
 	"github.com/stretchr/testify/assert"
@@ -15,7 +15,7 @@ func TestGenerateToken(t *testing.T) {
 		algo         string
 		secret       string
 		minSecretLen int
-		req          gorsk.User
+		req          models.User
 		wantErr      bool
 		want         string
 	}{
@@ -42,14 +42,14 @@ func TestGenerateToken(t *testing.T) {
 			algo:         "HS256",
 			secret:       "g0r$kt3$t1ng",
 			minSecretLen: 1,
-			req: gorsk.User{
-				Base: gorsk.Base{
+			req: models.User{
+				Base: models.Base{
 					ID: 1,
 				},
 				Username: "johndoe",
 				Email:    "johndoe@mail.com",
-				Role: &gorsk.Role{
-					AccessLevel: gorsk.SuperAdminRole,
+				Role: &models.Role{
+					AccessLevel: models.SuperAdminRole,
 				},
 				CompanyID:  1,
 				LocationID: 1,

@@ -2,11 +2,10 @@ package postgres_test
 
 import (
 	"database/sql"
+	"github.com/epavanello/gorsk/pkg/models"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"github.com/epavanello/gorsk"
 
 	"github.com/epavanello/gorsk/pkg/utl/postgres"
 
@@ -48,7 +47,7 @@ func TestNew(t *testing.T) {
 		t.Fatalf("Error establishing connection %v", err)
 	}
 
-	var user gorsk.User
+	var user models.User
 	db.Select(&user)
 
 	assert.NotNil(t, db)

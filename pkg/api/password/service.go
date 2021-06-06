@@ -1,11 +1,11 @@
 package password
 
 import (
+	"github.com/epavanello/gorsk/pkg/models"
 	"github.com/go-pg/pg/v9"
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
 
-	"github.com/epavanello/gorsk"
 	"github.com/epavanello/gorsk/pkg/api/password/platform/pgsql"
 )
 
@@ -39,8 +39,8 @@ type Password struct {
 
 // UserDB represents user repository interface
 type UserDB interface {
-	View(orm.DB, int) (gorsk.User, error)
-	Update(orm.DB, gorsk.User) error
+	View(orm.DB, int) (models.User, error)
+	Update(orm.DB, models.User) error
 }
 
 // Securer represents security interface

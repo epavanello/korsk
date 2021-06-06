@@ -1,6 +1,7 @@
 package auth
 
 import (
+	"github.com/epavanello/gorsk/pkg/models"
 	"github.com/go-pg/pg/v9"
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
@@ -29,7 +30,7 @@ func Initialize(db *pg.DB, j TokenGenerator, sec Securer, rbac RBAC) Auth {
 type Service interface {
 	Authenticate(echo.Context, string, string) (gorsk.AuthToken, error)
 	Refresh(echo.Context, string) (string, error)
-	Me(echo.Context) (gorsk.User, error)
+	Me(echo.Context) (models.User, error)
 }
 
 // Auth represents auth application service
@@ -43,15 +44,15 @@ type Auth struct {
 
 // UserDB represents user repository interface
 type UserDB interface {
-	View(orm.DB, int) (gorsk.User, error)
-	FindByUsername(orm.DB, string) (gorsk.User, error)
-	FindByToken(orm.DB, string) (gorsk.User, error)
-	Update(orm.DB, gorsk.User) error
+	View(orm.DB, int) (models.User, error)
+	FindByUsername(orm.DB, string) (models.User, error)
+	FindByToken(orm.DB, string) (models.User, error)
+	Update(orm.DB, models.User) error
 }
 
 // TokenGenerator represents token generator (jwt) interface
 type TokenGenerator interface {
-	GenerateToken(gorsk.User) (string, error)
+	GenerateToken(models.User) (string, error)
 }
 
 // Securer represents security interface
@@ -62,5 +63,5 @@ type Securer interface {
 
 // RBAC represents role-based-access-control interface
 type RBAC interface {
-	User(echo.Context) gorsk.AuthUser
+	User(echo.Context) models.AuthUser
 }

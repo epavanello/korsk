@@ -1,13 +1,12 @@
-package gorsk_test
+package models_test
 
 import (
+	"github.com/epavanello/gorsk/pkg/models"
 	"testing"
-
-	"github.com/epavanello/gorsk"
 )
 
 func TestChangePassword(t *testing.T) {
-	user := &gorsk.User{
+	user := &models.User{
 		FirstName: "TestGuy",
 	}
 
@@ -25,7 +24,7 @@ func TestChangePassword(t *testing.T) {
 }
 
 func TestUpdateLastLogin(t *testing.T) {
-	user := &gorsk.User{
+	user := &models.User{
 		FirstName: "TestGuy",
 	}
 

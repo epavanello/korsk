@@ -1,6 +1,7 @@
 package auth
 
 import (
+	"github.com/epavanello/gorsk/pkg/models"
 	"net/http"
 
 	"github.com/labstack/echo"
@@ -52,7 +53,7 @@ func (a Auth) Refresh(c echo.Context, refreshToken string) (string, error) {
 }
 
 // Me returns info about currently logged user
-func (a Auth) Me(c echo.Context) (gorsk.User, error) {
+func (a Auth) Me(c echo.Context) (models.User, error) {
 	au := a.rbac.User(c)
 	return a.udb.View(a.db, au.ID)
 }

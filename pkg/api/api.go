@@ -2,7 +2,7 @@
 // Use of this source code is governed by an MIT-style
 // license that can be found in the LICENSE file.
 
-// GORSK - Go(lang) restful starter kit
+// Package api GORSK - Go(lang) restful starter kit
 //
 // API Docs for GORSK v1
 //

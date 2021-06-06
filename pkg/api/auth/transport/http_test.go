@@ -3,6 +3,7 @@ package transport_test
 import (
 	"bytes"
 	"encoding/json"
+	"github.com/epavanello/gorsk/pkg/models"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -42,8 +43,8 @@ func TestLogin(t *testing.T) {
 			req:        `{"username":"juzernejm","password":"hunter123"}`,
 			wantStatus: http.StatusInternalServerError,
 			udb: &mockdb.User{
-				FindByUsernameFn: func(orm.DB, string) (gorsk.User, error) {
-					return gorsk.User{}, gorsk.ErrGeneric
+				FindByUsernameFn: func(orm.DB, string) (models.User, error) {
+					return models.User{}, gorsk.ErrGeneric
 				},
 			},
 		},
@@ -52,18 +53,18 @@ func TestLogin(t *testing.T) {
 			req:        `{"username":"juzernejm","password":"hunter123"}`,
 			wantStatus: http.StatusOK,
 			udb: &mockdb.User{
-				FindByUsernameFn: func(orm.DB, string) (gorsk.User, error) {
-					return gorsk.User{
+				FindByUsernameFn: func(orm.DB, string) (models.User, error) {
+					return models.User{
 						Password: "hunter123",
 						Active:   true,
 					}, nil
 				},
-				UpdateFn: func(db orm.DB, u gorsk.User) error {
+				UpdateFn: func(db orm.DB, u models.User) error {
 					return nil
 				},
 			},
 			jwt: &mock.JWT{
-				GenerateTokenFn: func(gorsk.User) (string, error) {
+				GenerateTokenFn: func(models.User) (string, error) {
 					return "jwttokenstring", nil
 				},
 			},
@@ -118,8 +119,8 @@ func TestRefresh(t *testing.T) {
 			req:        "refreshtoken",
 			wantStatus: http.StatusInternalServerError,
 			udb: &mockdb.User{
-				FindByTokenFn: func(orm.DB, string) (gorsk.User, error) {
-					return gorsk.User{}, gorsk.ErrGeneric
+				FindByTokenFn: func(orm.DB, string) (models.User, error) {
+					return models.User{}, gorsk.ErrGeneric
 				},
 			},
 		},
@@ -128,15 +129,15 @@ func TestRefresh(t *testing.T) {
 			req:        "refreshtoken",
 			wantStatus: http.StatusOK,
 			udb: &mockdb.User{
-				FindByTokenFn: func(orm.DB, string) (gorsk.User, error) {
-					return gorsk.User{
+				FindByTokenFn: func(orm.DB, string) (models.User, error) {
+					return models.User{
 						Username: "johndoe",
 						Active:   true,
 					}, nil
 				},
 			},
 			jwt: &mock.JWT{
-				GenerateTokenFn: func(gorsk.User) (string, error) {
+				GenerateTokenFn: func(models.User) (string, error) {
 					return "jwttokenstring", nil
 				},
 			},
@@ -172,7 +173,7 @@ func TestMe(t *testing.T) {
 	cases := []struct {
 		name       string
 		wantStatus int
-		wantResp   gorsk.User
+		wantResp   models.User
 		header     string
 		udb        *mockdb.User
 		rbac       *mock.RBAC
@@ -181,13 +182,13 @@ func TestMe(t *testing.T) {
 			name:       "Fail on user view",
 			wantStatus: http.StatusInternalServerError,
 			udb: &mockdb.User{
-				ViewFn: func(orm.DB, int) (gorsk.User, error) {
-					return gorsk.User{}, gorsk.ErrGeneric
+				ViewFn: func(orm.DB, int) (models.User, error) {
+					return models.User{}, gorsk.ErrGeneric
 				},
 			},
 			rbac: &mock.RBAC{
-				UserFn: func(echo.Context) gorsk.AuthUser {
-					return gorsk.AuthUser{ID: 1}
+				UserFn: func(echo.Context) models.AuthUser {
+					return models.AuthUser{ID: 1}
 				},
 			},
 			header: mock.HeaderValid(),
@@ -196,9 +197,9 @@ func TestMe(t *testing.T) {
 			name:       "Success",
 			wantStatus: http.StatusOK,
 			udb: &mockdb.User{
-				ViewFn: func(db orm.DB, i int) (gorsk.User, error) {
-					return gorsk.User{
-						Base: gorsk.Base{
+				ViewFn: func(db orm.DB, i int) (models.User, error) {
+					return models.User{
+						Base: models.Base{
 							ID: i,
 						},
 						CompanyID:  2,
@@ -210,13 +211,13 @@ func TestMe(t *testing.T) {
 				},
 			},
 			rbac: &mock.RBAC{
-				UserFn: func(echo.Context) gorsk.AuthUser {
-					return gorsk.AuthUser{ID: 1}
+				UserFn: func(echo.Context) models.AuthUser {
+					return models.AuthUser{ID: 1}
 				},
 			},
 			header: mock.HeaderValid(),
-			wantResp: gorsk.User{
-				Base: gorsk.Base{
+			wantResp: models.User{
+				Base: models.Base{
 					ID: 1,
 				},
 				CompanyID:  2,
@@ -252,7 +253,7 @@ func TestMe(t *testing.T) {
 			}
 			defer res.Body.Close()
 			if tt.wantResp.ID != 0 {
-				var response gorsk.User
+				var response models.User
 				if err := json.NewDecoder(res.Body).Decode(&response); err != nil {
 					t.Fatal(err)
 				}

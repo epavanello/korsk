@@ -1,29 +1,28 @@
 package mock
 
 import (
+	"github.com/epavanello/gorsk/pkg/models"
 	"github.com/labstack/echo"
-
-	"github.com/epavanello/gorsk"
 )
 
 // RBAC Mock
 type RBAC struct {
-	UserFn            func(echo.Context) gorsk.AuthUser
-	EnforceRoleFn     func(echo.Context, gorsk.AccessRole) error
+	UserFn            func(echo.Context) models.AuthUser
+	EnforceRoleFn     func(echo.Context, models.AccessRole) error
 	EnforceUserFn     func(echo.Context, int) error
 	EnforceCompanyFn  func(echo.Context, int) error
 	EnforceLocationFn func(echo.Context, int) error
-	AccountCreateFn   func(echo.Context, gorsk.AccessRole, int, int) error
-	IsLowerRoleFn     func(echo.Context, gorsk.AccessRole) error
+	AccountCreateFn   func(echo.Context, models.AccessRole, int, int) error
+	IsLowerRoleFn     func(echo.Context, models.AccessRole) error
 }
 
 // User mock
-func (a RBAC) User(c echo.Context) gorsk.AuthUser {
+func (a RBAC) User(c echo.Context) models.AuthUser {
 	return a.UserFn(c)
 }
 
 // EnforceRole mock
-func (a RBAC) EnforceRole(c echo.Context, role gorsk.AccessRole) error {
+func (a RBAC) EnforceRole(c echo.Context, role models.AccessRole) error {
 	return a.EnforceRoleFn(c, role)
 }
 
@@ -43,11 +42,11 @@ func (a RBAC) EnforceLocation(c echo.Context, id int) error {
 }
 
 // AccountCreate mock
-func (a RBAC) AccountCreate(c echo.Context, roleID gorsk.AccessRole, companyID, locationID int) error {
+func (a RBAC) AccountCreate(c echo.Context, roleID models.AccessRole, companyID, locationID int) error {
 	return a.AccountCreateFn(c, roleID, companyID, locationID)
 }
 
 // IsLowerRole mock
-func (a RBAC) IsLowerRole(c echo.Context, role gorsk.AccessRole) error {
+func (a RBAC) IsLowerRole(c echo.Context, role models.AccessRole) error {
 	return a.IsLowerRoleFn(c, role)
 }

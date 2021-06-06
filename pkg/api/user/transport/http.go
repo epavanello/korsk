@@ -1,6 +1,7 @@
 package transport
 
 import (
+	"github.com/epavanello/gorsk/pkg/models"
 	"net/http"
 	"strconv"
 
@@ -150,9 +151,9 @@ type createReq struct {
 	PasswordConfirm string `json:"password_confirm" validate:"required"`
 	Email           string `json:"email" validate:"required,email"`
 
-	CompanyID  int              `json:"company_id" validate:"required"`
-	LocationID int              `json:"location_id" validate:"required"`
-	RoleID     gorsk.AccessRole `json:"role_id" validate:"required"`
+	CompanyID  int               `json:"company_id" validate:"required"`
+	LocationID int               `json:"location_id" validate:"required"`
+	RoleID     models.AccessRole `json:"role_id" validate:"required"`
 }
 
 func (h HTTP) create(c echo.Context) error {
@@ -167,11 +168,11 @@ func (h HTTP) create(c echo.Context) error {
 		return ErrPasswordsNotMaching
 	}
 
-	if r.RoleID < gorsk.SuperAdminRole || r.RoleID > gorsk.UserRole {
+	if r.RoleID < models.SuperAdminRole || r.RoleID > models.UserRole {
 		return gorsk.ErrBadRequest
 	}
 
-	usr, err := h.svc.Create(c, gorsk.User{
+	usr, err := h.svc.Create(c, models.User{
 		Username:   r.Username,
 		Password:   r.Password,
 		Email:      r.Email,
@@ -190,8 +191,8 @@ func (h HTTP) create(c echo.Context) error {
 }
 
 type listResponse struct {
-	Users []gorsk.User `json:"users"`
-	Page  int          `json:"page"`
+	Users []models.User `json:"users"`
+	Page  int           `json:"page"`
 }
 
 func (h HTTP) list(c echo.Context) error {

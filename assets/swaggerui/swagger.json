@@ -123,7 +123,7 @@
         "operationId": "pwChange",
         "parameters": [
           {
-            "type": "int",
+            "type": "integer",
             "description": "id of user",
             "name": "id",
             "in": "path",
@@ -168,13 +168,13 @@
         "operationId": "listUsers",
         "parameters": [
           {
-            "type": "int",
+            "type": "integer",
             "description": "number of results",
             "name": "limit",
             "in": "query"
           },
           {
-            "type": "int",
+            "type": "integer",
             "description": "page number",
             "name": "page",
             "in": "query"
@@ -233,7 +233,7 @@
         "operationId": "getUser",
         "parameters": [
           {
-            "type": "int",
+            "type": "integer",
             "description": "id of user",
             "name": "id",
             "in": "path",
@@ -270,7 +270,7 @@
         "operationId": "userDelete",
         "parameters": [
           {
-            "type": "int",
+            "type": "integer",
             "description": "id of user",
             "name": "id",
             "in": "path",
@@ -304,7 +304,7 @@
         "operationId": "userUpdate",
         "parameters": [
           {
-            "type": "int",
+            "type": "integer",
             "description": "id of user",
             "name": "id",
             "in": "path",
@@ -345,7 +345,7 @@
       "description": "AccessRole represents access role type",
       "type": "integer",
       "format": "int64",
-      "x-go-package": "github.com/epavanello/gorsk"
+      "x-go-package": "github.com/epavanello/gorsk/pkg/models"
     },
     "Role": {
       "description": "Role model",
@@ -362,7 +362,7 @@
           "x-go-name": "Name"
         }
       },
-      "x-go-package": "github.com/epavanello/gorsk"
+      "x-go-package": "github.com/epavanello/gorsk/pkg/models"
     },
     "User": {
       "description": "User represents user domain model",
@@ -444,7 +444,7 @@
           "x-go-name": "Username"
         }
       },
-      "x-go-package": "github.com/epavanello/gorsk"
+      "x-go-package": "github.com/epavanello/gorsk/pkg/models"
     },
     "credentials": {
       "type": "object",

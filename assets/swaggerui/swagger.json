@@ -345,12 +345,7 @@
       "description": "AccessRole represents access role type",
       "type": "integer",
       "format": "int64",
-      "x-go-package": "github.com/epavanello/gorsk/pkg/utl/model"
-    },
-    "HTTP": {
-      "description": "HTTP represents password http transport service",
-      "type": "object",
-      "x-go-package": "github.com/epavanello/gorsk/pkg/api/password/transport"
+      "x-go-package": "github.com/epavanello/gorsk"
     },
     "Role": {
       "description": "Role model",
@@ -367,7 +362,7 @@
           "x-go-name": "Name"
         }
       },
-      "x-go-package": "github.com/epavanello/gorsk/pkg/utl/model"
+      "x-go-package": "github.com/epavanello/gorsk"
     },
     "User": {
       "description": "User represents user domain model",
@@ -449,7 +444,7 @@
           "x-go-name": "Username"
         }
       },
-      "x-go-package": "github.com/epavanello/gorsk/pkg/utl/model"
+      "x-go-package": "github.com/epavanello/gorsk"
     },
     "credentials": {
       "type": "object",
@@ -464,24 +459,6 @@
         }
       },
       "x-go-package": "github.com/epavanello/gorsk/pkg/api/auth/transport"
-    },
-    "listResponse": {
-      "type": "object",
-      "properties": {
-        "page": {
-          "type": "integer",
-          "format": "int64",
-          "x-go-name": "Page"
-        },
-        "users": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/User"
-          },
-          "x-go-name": "Users"
-        }
-      },
-      "x-go-package": "github.com/epavanello/gorsk/pkg/api/user/transport"
     },
     "pwChange": {
       "description": "Password change request",
@@ -594,10 +571,6 @@
       "schema": {
         "type": "object",
         "properties": {
-          "expires": {
-            "type": "string",
-            "x-go-name": "Expires"
-          },
           "refresh_token": {
             "type": "string",
             "x-go-name": "RefreshToken"
@@ -617,10 +590,6 @@
       "schema": {
         "type": "object",
         "properties": {
-          "expires": {
-            "type": "string",
-            "x-go-name": "Expires"
-          },
           "token": {
             "type": "string",
             "x-go-name": "Token"

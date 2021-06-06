@@ -162,4 +162,6 @@ gorsk is licensed under the MIT license. Check the [LICENSE](LICENSE) file for d
 [Emir Ribic](https://ribice.ba)
 
 # Config
-DATABASE_URL=postgres://{user}:{password}@{hostname}:{port}/{database-name}
+`DATABASE_URL=postgres://{user}:{password}@{hostname}:{port}/{database-name}`
+
+`swagger.bat generate spec -o ./assets/swaggerui/swagger.json --scan-models`

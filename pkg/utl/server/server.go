@@ -2,14 +2,15 @@ package server
 
 import (
 	"context"
+	"mime"
 	"net/http"
 	"os"
 	"os/signal"
 	"time"
 
+	"github.com/epavanello/gorsk/pkg/utl/middleware/secure"
 	"github.com/go-playground/validator"
 	"github.com/labstack/echo/middleware"
-	"github.com/epavanello/gorsk/pkg/utl/middleware/secure"
 
 	"github.com/labstack/echo"
 )
@@ -37,6 +38,10 @@ type Config struct {
 	ReadTimeoutSeconds  int
 	WriteTimeoutSeconds int
 	Debug               bool
+}
+
+func init() {
+	mime.AddExtensionType(".js", "application/javascript")
 }
 
 // Start starts echo server

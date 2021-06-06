@@ -11,6 +11,7 @@ import (
 
 	"github.com/go-pg/pg/v9"
 	"github.com/go-pg/pg/v9/orm"
+	_ "github.com/joho/godotenv/autoload"
 )
 
 func main() {

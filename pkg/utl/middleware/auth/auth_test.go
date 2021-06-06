@@ -9,8 +9,8 @@ import (
 	"github.com/labstack/echo"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/utl/middleware/auth"
+	"github.com/epavanello/gorsk"
+	"github.com/epavanello/gorsk/pkg/utl/middleware/auth"
 )
 
 func echoHandler(mw ...echo.MiddlewareFunc) *echo.Echo {

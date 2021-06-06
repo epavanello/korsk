@@ -6,7 +6,7 @@ import (
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
 
-	"github.com/ribice/gorsk"
+	"github.com/epavanello/gorsk"
 )
 
 // TokenParser represents JWT token parser

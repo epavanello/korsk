@@ -9,7 +9,7 @@ import (
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
 
-	"github.com/ribice/gorsk"
+	"github.com/epavanello/gorsk"
 )
 
 // User represents the client for user table

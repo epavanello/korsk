@@ -6,10 +6,10 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/ribice/gorsk"
+	"github.com/epavanello/gorsk"
 
-	"github.com/ribice/gorsk/pkg/api/user/platform/pgsql"
-	"github.com/ribice/gorsk/pkg/utl/mock"
+	"github.com/epavanello/gorsk/pkg/api/user/platform/pgsql"
+	"github.com/epavanello/gorsk/pkg/utl/mock"
 )
 
 func TestCreate(t *testing.T) {

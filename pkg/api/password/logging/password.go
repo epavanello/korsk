@@ -5,8 +5,8 @@ import (
 
 	"github.com/labstack/echo"
 
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/api/password"
+	"github.com/epavanello/gorsk"
+	"github.com/epavanello/gorsk/pkg/api/password"
 )
 
 // New creates new password logging service

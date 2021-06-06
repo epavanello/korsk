@@ -4,8 +4,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/utl/jwt"
+	"github.com/epavanello/gorsk"
+	"github.com/epavanello/gorsk/pkg/utl/jwt"
 
 	"github.com/stretchr/testify/assert"
 )

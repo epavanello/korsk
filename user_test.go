@@ -3,7 +3,7 @@ package gorsk_test
 import (
 	"testing"
 
-	"github.com/ribice/gorsk"
+	"github.com/epavanello/gorsk"
 )
 
 func TestChangePassword(t *testing.T) {

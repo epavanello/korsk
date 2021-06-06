@@ -1,7 +1,7 @@
 package mock
 
 import (
-	"github.com/ribice/gorsk"
+	"github.com/epavanello/gorsk"
 )
 
 // JWT mock

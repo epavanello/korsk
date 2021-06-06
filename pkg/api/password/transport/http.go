@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/api/password"
+	"github.com/epavanello/gorsk"
+	"github.com/epavanello/gorsk/pkg/api/password"
 
 	"github.com/labstack/echo"
 )

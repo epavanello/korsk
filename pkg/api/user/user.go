@@ -4,8 +4,8 @@ package user
 import (
 	"github.com/labstack/echo"
 
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/utl/query"
+	"github.com/epavanello/gorsk"
+	"github.com/epavanello/gorsk/pkg/utl/query"
 )
 
 // Create creates a new user account

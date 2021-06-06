@@ -5,8 +5,8 @@ import (
 
 	"github.com/labstack/echo"
 
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/api/auth"
+	"github.com/epavanello/gorsk"
+	"github.com/epavanello/gorsk/pkg/api/auth"
 )
 
 // New creates new auth logging service

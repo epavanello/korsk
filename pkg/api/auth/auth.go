@@ -5,7 +5,7 @@ import (
 
 	"github.com/labstack/echo"
 
-	"github.com/ribice/gorsk"
+	"github.com/epavanello/gorsk"
 )
 
 // Custom errors

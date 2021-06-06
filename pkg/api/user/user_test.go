@@ -6,10 +6,10 @@ import (
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
 
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/api/user"
-	"github.com/ribice/gorsk/pkg/utl/mock"
-	"github.com/ribice/gorsk/pkg/utl/mock/mockdb"
+	"github.com/epavanello/gorsk"
+	"github.com/epavanello/gorsk/pkg/api/user"
+	"github.com/epavanello/gorsk/pkg/utl/mock"
+	"github.com/epavanello/gorsk/pkg/utl/mock/mockdb"
 
 	"github.com/stretchr/testify/assert"
 )

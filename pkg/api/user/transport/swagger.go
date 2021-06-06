@@ -1,7 +1,7 @@
 package transport
 
 import (
-	"github.com/ribice/gorsk"
+	"github.com/epavanello/gorsk"
 )
 
 // User model response

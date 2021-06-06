@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ribice/gorsk"
+	"github.com/epavanello/gorsk"
 
 	"github.com/dgrijalva/jwt-go"
 )

@@ -5,8 +5,8 @@ import (
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
 
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/api/password/platform/pgsql"
+	"github.com/epavanello/gorsk"
+	"github.com/epavanello/gorsk/pkg/api/password/platform/pgsql"
 )
 
 // Service represents password application interface

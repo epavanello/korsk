@@ -2,13 +2,16 @@ package main
 
 import (
 	"flag"
+	"os"
 
-	"github.com/ribice/gorsk/pkg/api"
+	"github.com/epavanello/gorsk/pkg/api"
 
-	"github.com/ribice/gorsk/pkg/utl/config"
+	"github.com/epavanello/gorsk/pkg/utl/config"
 )
 
 func main() {
+
+	os.Setenv("ENVIRONMENT_NAME", "dev")
 
 	cfgPath := flag.String("p", "./cmd/api/conf.local.yaml", "Path to config file")
 	flag.Parse()

@@ -5,11 +5,11 @@ import (
 
 	"github.com/labstack/echo"
 
-	"github.com/ribice/gorsk"
+	"github.com/epavanello/gorsk"
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/ribice/gorsk/pkg/utl/query"
+	"github.com/epavanello/gorsk/pkg/utl/query"
 )
 
 func TestList(t *testing.T) {

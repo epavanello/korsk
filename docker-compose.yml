@@ -1,0 +1,21 @@
+version: "3"
+services:
+  database:
+    image: "postgres"
+    env_file:
+      - .env
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+  app:
+    build:
+      context: .
+      args:
+        - VARIANT=1.16
+        - INSTALL_NODE=false
+        - NODE_VERSION=lts/*
+    depends_on:
+      - database
+    ports:
+      - "8080:8080"
+volumes:
+  database-data:
